@@ -1,17 +1,17 @@
 yakbak-docker
 =============
 
-This container aids you to quickly cache http/https calls to any website and store them for further use.
+This container aids you to quickly cache http/https calls to any website or api and store them for further use.
 
 It just a quick way to use the [Flickr's yakbak][0] project.
 
 ## How does it work?
 
-It works as a proxy that knows your desired endpoint to go ask for data. It'll then record both the request and the response, so a next call won't hit the actual endpoint.
+It works as a proxy for a given endpoint. Instead of hitting that endpoint you'll hit the url `http://localhost:7000`. The first call will be forwarded to the real endpoint, recording both the request and the response.
 
-You'll then replace the endpoint to calls made to `http://localhost:7000`. That's all.
+All the subsequent ones will be provided by the cached version. That's it.
 
-## Options
+## Environment options
 
 - `PROXY_PORT` defaults to 7000
 
@@ -22,7 +22,7 @@ You'll then replace the endpoint to calls made to `http://localhost:7000`. That'
 Starts it to record and proxy further requests to the given url
 
 ```sh
-docker run --rm -ti yakbak-dockerhttps://google.com
+docker run --rm -ti yakbak-docker https://google.com
 ```
 
 ### Preserving your tapes
@@ -30,7 +30,7 @@ docker run --rm -ti yakbak-dockerhttps://google.com
 This is handy to allow you to share those tapes with your team. As they're just plain js files you can versionate them on git.
 
 ```sh
-docker run --rm -ti -v "$(pwd):/tapes" yakbak-dockerhttps://google.com
+docker run --rm -ti -v "$(pwd):/tapes" yakbak-docker https://google.com
 ```
 
 [0]: https://github.com/flickr/yakbak
