@@ -30,7 +30,7 @@ docker run --rm -ti yakbak-dockerhttps://google.com
 This is handy to allow you to share those tapes with your team. As they're just plain js files you can versionate them on git.
 
 ```sh
-docker run --rm -ti -v "$(pwd):/yarbak/tapes" yakbak-dockerhttps://google.com
+docker run --rm -ti -v "$(pwd):/tapes" yakbak-dockerhttps://google.com
 ```
 
 [0]: https://github.com/flickr/yakbak
